@@ -1,0 +1,53 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {
+            "res/xml/config.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"SBD\"><param name=\"android-package\" value=\"fr.omegasolutions.plugin.Sbd\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"KeepScreenOn\"><param name=\"android-package\" value=\"fr.omegasolutions.plugin.KeepScreenOn\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            },
+            "config.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<feature name=\"Keyboard\"><param name=\"android-package\" onload=\"true\" value=\"org.apache.cordova.labs.keyboard.Keyboard\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "installed_plugins": {
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.os.pharma"
+        },
+        "cordova-plugin-android-status-bar-disabler": {
+            "PACKAGE_NAME": "com.os.pharma"
+        },
+        "cordova-plugin-keep-screen-on": {
+            "PACKAGE_NAME": "com.os.pharma"
+        },
+        "cordova-plugin-keyboard": {
+            "PACKAGE_NAME": "com.os.pharma"
+        }
+    },
+    "dependent_plugins": {}
+}

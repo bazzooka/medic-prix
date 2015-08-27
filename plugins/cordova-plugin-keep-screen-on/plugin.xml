@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+        id="cordova-plugin-keep-screen-on"
+        version="0.1.0">
+
+
+	<name>KeepScreenOn</name>
+  	<engines>
+    	<engine name="cordova" version=">=3.4.0"/>
+  	</engines>
+
+	<platform name="android">
+		<config-file parent="/*" target="res/xml/config.xml">
+			<feature name="KeepScreenOn">
+				<param name="android-package" value="fr.omegasolutions.plugin.KeepScreenOn" />
+				<param name="onload" value="true" />
+			</feature>
+		</config-file>
+		<source-file src="src/android/KeepScreenOn.java" target-dir="src/fr/omegasolutions/plugin" />
+	</platform>
+</plugin>
