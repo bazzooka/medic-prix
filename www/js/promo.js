@@ -15,13 +15,18 @@ ajaxPromo.get(SERVER_HOST + '/data/datas.json' ).done(function( response, xhr ) 
 	for(var i = 0, l = response.promos.length; i < l; i++){
 		var obj = response.promos[i];
 		var slideContent = "";
-		slideContent += '<img u="image" src="' + obj.image + '" />';
+		var isPrice = obj.prix.unit;
+		slideContent += '<img u="image" src="' + SERVER_HOST + obj.image + '" />';
         slideContent += '<div u="caption" t="fromLeft" style="position: absolute; top: 30px; left: 30px; width: 50px;height: 50px;">';
-    		slideContent += '<div class="price-container">';
-        		slideContent += '<span class="unite">' + obj.prix.unit + '</span>' + '<span class="cents">.' + obj.prix.cents + '€</span>';
-        		slideContent += '<div class="qty">'
-		        	slideContent += '<span class="">' + obj.qty + '</div>' + ( obj.prix.unite ? '<span class="unit">' + obj.prix.unite : '') + '</span>';
-		        slideContent +='</div>';
+    		slideContent += '<div class="price-container ' + (isPrice ? '' : 'no-price') + '">';
+						if(!isPrice){
+							slideContent += '<span class="unit-text">' + obj.prix.text + '</span>';
+						} else {
+							slideContent += '<span class="unite">' + obj.prix.unit + '</span>' + '<span class="cents">.' + obj.prix.cents + '€</span>';
+	        		slideContent += '<div class="qty">'
+			        	slideContent += '<span class="">' + obj.qty + '</div>' + ( obj.prix.unite ? '<span class="unit">' + obj.prix.unite : '') + '</span>';
+			        slideContent +='</div>';
+						}
         	slideContent += '</div>';
         slideContent += '</div>';
         slideContent += '<div class="fromBottom" u="caption" t="fromBottom" style="position: absolute; top: 150px; left: 0px; width: 50px;height: 50px;">';
@@ -30,10 +35,10 @@ ajaxPromo.get(SERVER_HOST + '/data/datas.json' ).done(function( response, xhr ) 
 
         if(obj.vignette){
         	slideContent += '<div class="fromRight" u="caption" t="fromRight" style="position: absolute; top: 50px; left: 0px; width: 50px;height: 50px;">';
-	        slideContent += '<span class="vignette ' + obj.vignette +'"></span>';
+	        slideContent += '<span class="vignette ' + SERVER_HOST + obj.vignette +'"></span>';
 	        slideContent += '</div>';
         }
-        
+
 
         var elt = document.createElement('div');
         elt.innerHTML = slideContent;
@@ -43,7 +48,7 @@ ajaxPromo.get(SERVER_HOST + '/data/datas.json' ).done(function( response, xhr ) 
 
 	resizeSlider();
 	startSlider();
-});	
+});
 
 
 var resizeSlider = function(){
@@ -81,14 +86,14 @@ jssor_slider1_starter = function (containerId) {
     _CaptionTransitions["fromRight"] = [ {$Duration:900,x:-0.6,$Zoom:1,$Easing:{$Left:$JssorEasing$.$EaseInCubic,$Zoom:$JssorEasing$.$EaseInCubic},$Opacity:2}];
 
 
-	var options = { 
+	var options = {
 		$AutoPlay: false,
 		$FillMode: 1,
 		$CaptionSliderOptions: {
 			$Class: $JssorCaptionSlider$,
 			$CaptionTransitions: _CaptionTransitions,
 			$PlayInMode: 1,
-			$PlayOutMode: 3 
+			$PlayOutMode: 3
 		}
 
 
